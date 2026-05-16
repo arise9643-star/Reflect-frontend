@@ -232,7 +232,7 @@ const OnboardingView = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-ivory flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-[#13111a] flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(138, 120, 255, 0.1) 0%, transparent 100%)' }} />
       <div className="absolute top-1/4 -left-20 w-64 h-64 bg-lavender-500 rounded-full blur-[100px] opacity-10" />
       <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-lavender-500 rounded-full blur-[100px] opacity-10" />
