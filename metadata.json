@@ -1,0 +1,6 @@
+{
+  "name": "Reflect",
+  "description": "A peaceful digital sanctuary for mindful journaling and self-reflection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+
+  --color-lavender-50: #f4f3ff;
+  --color-lavender-100: #e9e7ff;
+  --color-lavender-200: #d6d1ff;
+  --color-lavender-300: #b9afff;
+  --color-lavender-400: #9e96cc;
+  --color-lavender-500: #5f588a;
+  
+  --color-ivory: #fbf9f5;
+  --color-plum-grey: #48454e;
+}
+
+[data-theme="dark"] {
+  --color-ivory: #13111a;
+  --color-plum-grey: #e8e4f0;
+  --color-lavender-50: #1e1b2e;
+  --color-lavender-100: #2a2640;
+  --color-lavender-200: #3d3860;
+  --color-lavender-300: #5a5480;
+  --color-lavender-400: #8880b8;
+  --color-lavender-500: #a89fd4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[data-theme] {
+  transition: background-color 0.7s cubic-bezier(0.23, 1, 0.32, 1), color 0.5s ease;
+}
+
+html {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+body {
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+[data-theme="dark"] textarea::placeholder {
+  color: rgba(232, 228, 240, 0.2);
+}
+
+@layer base {
+  body {
+    @apply bg-ivory text-plum-grey font-sans;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    @apply bg-lavender-100 text-plum-grey;
+  }
+
+  [data-theme="dark"] ::selection {
+    background: #3d3860;
+    color: #e8e4f0;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .pb-safe {
+      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+.misty-overlay {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(251, 249, 245, 0.8) 100%);
+}
