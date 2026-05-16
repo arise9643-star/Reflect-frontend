@@ -827,9 +827,65 @@ const JournalEntryView = () => {
   );
 };
 
+const EntryDetailView = ({ entry, onBack }: { entry: any; onBack: () => void }) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-ivory dark:bg-[#13111a] z-50 overflow-y-auto"
+    >
+      <div className="w-full md:max-w-4xl md:mx-auto px-5 py-6 md:px-16 md:py-16 min-h-full">
+        <motion.button 
+          onClick={onBack}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="p-3 bg-lavender-50 dark:bg-lavender-500/10 hover:bg-lavender-100 dark:hover:bg-lavender-500/20 rounded-full transition-colors text-lavender-500 shadow-sm border border-lavender-100/30 mb-8"
+        >
+          <ArrowLeft className="w-6 h-6" />
+        </motion.button>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="space-y-6 md:space-y-8"
+        >
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-plum-grey">
+              {entry.title}
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-6">
+              <span className="text-sm md:text-base text-plum-grey/60 font-medium">
+                {new Date(entry.date).toLocaleDateString('en-US', { 
+                  weekday: 'long',
+                  month: 'long', 
+                  day: 'numeric', 
+                  year: 'numeric' 
+                })}
+              </span>
+              <span className="text-xs md:text-sm uppercase tracking-widest font-bold px-4 py-2 bg-lavender-50 dark:bg-lavender-500/20 border border-lavender-100/30 dark:border-lavender-500/30 rounded-full text-lavender-500">
+                {entry.mood}
+              </span>
+            </div>
+          </div>
+
+          <div className="border-t border-lavender-200/30 dark:border-lavender-500/20 pt-8 md:pt-12">
+            <p className="text-lg md:text-xl leading-relaxed font-serif text-plum-grey/80 whitespace-pre-wrap">
+              {entry.content}
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Archive = () => {
   const { entries, setView, deleteEntry, activeMonth, setActiveMonth } = useAppContext();
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [selectedEntry, setSelectedEntry] = useState<any>(null);
 
   const filteredEntries = activeMonth 
     ? entries.filter(entry => {
@@ -838,6 +894,10 @@ const Archive = () => {
         return monthName === activeMonth;
       })
     : entries;
+
+  if (selectedEntry) {
+    return <EntryDetailView entry={selectedEntry} onBack={() => setSelectedEntry(null)} />;
+  }
 
   return (
     <motion.div 
@@ -914,7 +974,13 @@ const Archive = () => {
             >
               <div className="absolute left-[0.1rem] md:left-4 top-6 w-3 h-3 rounded-full bg-lavender-100 group-hover:bg-lavender-500 transition-all duration-300 border-2 border-ivory z-10" />
               
-              <div className="pt-4 px-4">
+              <div 
+                onClick={() => {
+                  soundService.playSoftClick();
+                  setSelectedEntry(entry);
+                }}
+                className="pt-4 px-4 cursor-pointer"
+              >
                 <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-lavender-500/40 mb-3 block">
                   {new Date(entry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </span>
