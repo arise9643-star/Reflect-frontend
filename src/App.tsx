@@ -198,16 +198,25 @@ const OnboardingView = () => {
             </div>
             <div>
               <h4 className="font-bold text-xs uppercase tracking-widest text-white/80 mb-1">Journal</h4>
-              <p className="text-sm text-white/50 italic">Record your daily reflections and moods.</p>
+              <p className="text-sm text-white/50 italic">Write anything. Your thoughts, your day, your fears. An AI mentor reads every entry and responds like a wise friend who genuinely cares.</p>
             </div>
           </div>
           <div className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
             <div className="w-10 h-10 bg-white/10 text-lavender-400 flex items-center justify-center rounded-full shrink-0 shadow-sm border border-white/10">
-              <BookOpen className="w-5 h-5" />
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="font-bold text-xs uppercase tracking-widest text-white/80 mb-1">Discover Yourself</h4>
+              <p className="text-sm text-white/50 italic">Chat with an AI that knows your entire journal history. Ask it "what patterns do you see in me?" and get real answers.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
+            <div className="w-10 h-10 bg-white/10 text-lavender-400 flex items-center justify-center rounded-full shrink-0 shadow-sm border border-white/10">
+              <History className="w-5 h-5" />
             </div>
             <div>
               <h4 className="font-bold text-xs uppercase tracking-widest text-white/80 mb-1">Archive</h4>
-              <p className="text-sm text-white/50 italic">Look back through time at your past sanctuaries.</p>
+              <p className="text-sm text-white/50 italic">Browse all your past entries organized by month. Your entire journey in one place.</p>
             </div>
           </div>
           <div className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
@@ -216,7 +225,16 @@ const OnboardingView = () => {
             </div>
             <div>
               <h4 className="font-bold text-xs uppercase tracking-widest text-white/80 mb-1">Meditate</h4>
-              <p className="text-sm text-white/50 italic">Guided breathing to find peace in any moment.</p>
+              <p className="text-sm text-white/50 italic">Guided breathing sessions to clear your mind before or after writing.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
+            <div className="w-10 h-10 bg-white/10 text-lavender-400 flex items-center justify-center rounded-full shrink-0 shadow-sm border border-white/10">
+              <Settings className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="font-bold text-xs uppercase tracking-widest text-white/80 mb-1">Dark & Light Mode</h4>
+              <p className="text-sm text-white/50 italic">Your sanctuary, your aesthetic. Switch anytime in Settings.</p>
             </div>
           </div>
         </div>
